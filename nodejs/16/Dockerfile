@@ -16,6 +16,8 @@ RUN adduser --disabled-password --home /home/container container
 
 RUN git config --global pull.rebase false
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 USER container
 
 ENV  USER=container HOME=/home/container

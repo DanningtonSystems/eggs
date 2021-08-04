@@ -14,6 +14,8 @@ RUN apk add --no-cache --update yarn
 
 RUN adduser --disabled-password --home /home/container container
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 USER container
 
 ENV  USER=container HOME=/home/container
