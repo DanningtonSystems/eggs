@@ -1,0 +1,69 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1",
+        "update_url": null
+    },
+    "exported_at": "2021-08-04T14:58:44-07:00",
+    "name": "Node.js",
+    "author": "hello@bean.codes",
+    "description": "A Node.js egg for DanningtonSystems.",
+    "features": null,
+    "images": [
+        "ghcr.io\/danningtonsystems\/node:16",
+        "ghcr.io\/danningtonsystems\/node:14"
+    ],
+    "file_denylist": [],
+    "startup": "\/usr\/bin\/false",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"CSTART\"\r\n}",
+        "logs": "{}",
+        "stop": "^C^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# DanningtonSystems node.js installation script\r\necho \"[.] Installing packages..\"\r\n\r\napk add --no-cache --update build-base sudo curl wget alpine-sdk python3 python3-dev libtool libjpeg jpeg jpeg-dev cairo cairo-dev pango pango-dev giflib-dev\r\n\r\nclear\r\n\r\necho \"[.] Installing packages..\"\r\necho \"[+} Installed packages\"\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\necho \"[+] Created server mount\"\r\n\r\nif [[ ! \"$GIT_REPOSITORY\" == \"\" ]];\r\nthen\r\n    echo \"[.] Running Git repository cloning commands..\"\r\n    git clone \"$GIT_REPOSITORY\" .\r\n    echo \"[.] Git repository cloning commands were run\"\r\nfi\r\n\r\necho \"[.] Running prerequisite install commands..\"\r\n\r\necho \"$INSTALL_PREREQ\" | sudo bash -E -\r\n\r\necho \"[+] Prerequisite install commands were run\"\r\necho \"[.] Running yarn install..\"\r\n\r\n\/usr\/local\/bin\/yarn install\r\n\r\necho \"[+] yarn install was run successfully\"\r\necho \"[+] Install script complete\"",
+            "container": "node:16-alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Entryfile",
+            "description": "This should be the file that should be started with Node.js on startup.",
+            "env_variable": "ENTRYFILE",
+            "default_value": "index.js",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:256"
+        },
+        {
+            "name": "Prerequisite startup commands",
+            "description": "These are commands that will be run prior to package auditing and application entry. Here, you can use commands like yarn add or fetch a remote script for automated prerequisite management. (This will be run with bash evaluation, so make sure to run commands in unattended mode.)",
+            "env_variable": "STARTUP_PREREQ",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string"
+        },
+        {
+            "name": "Prerequisite install commands",
+            "description": "These are commands that will be run during the container installation process. These will be run prior to package dependency install *AS ROOT*. Do note that install prerequisites are run using bash evaluation, so make sure to run commands in unattended mode.",
+            "env_variable": "INSTALL_PREREQ",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string"
+        },
+        {
+            "name": "Git repository URL",
+            "description": "This is the URL (including authentication) to the Git repository. The entirety of this variable will be passed in as \"git clone [REPOSITORY URL] .\" or \"git pull [REPOSITORY URL]\".",
+            "env_variable": "GIT_REPOSITORY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string"
+        }
+    ]
+}

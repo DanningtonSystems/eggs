@@ -14,6 +14,8 @@ RUN apk add --no-cache --update yarn
 
 RUN adduser --disabled-password --home /home/container container
 
+RUN git config --global pull.rebase false
+
 USER container
 
 ENV  USER=container HOME=/home/container
