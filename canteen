@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+ProductName="Canteen"
+ProductVersion=1.0.0
+ProductMaster=false
+
+if [ -f ".enablepublish" ]; then
+    export ProductMaster=true
+fi
+
+clear
+echo "== PASSING CONTROL TO CANTEEN =="
+function canteen() {
+    if [ "$ProductMaster" = "true" ]; then
+        echo "$ProductName v$ProductVersion by DanningtonSystems (PUBLISHER MODE ENABLED)"
+    else
+        echo "$ProductName v$ProductVersion by DanningtonSystems"
+    fi
+    echo "Select an image tag to build:"
+    echo "1. developer/alpine:latest (developer:alpine-latest)"
+    echo "2. pterodactyl/nodejs (nodejs:*)"
+    read -p "Select the number corresponding to the image tag that should be built, or press CTRL+C (^C) to exit: " InputTag
+
+    if [[ "$InputTag" == "1" ]]; then
+        echo "Building developer:alpine-latest from developer/alpine:latest..."
+        chmod +x ./developer/alpine/latest/canteen.sh
+        cd ./developer/alpine/latest
+        cat ./canteen.sh | bash -E -
+    elif [[ "$InputTag" == "2" ]]; then
+        echo "Building pterodactyl/nodejs from pterodactyl/nodejs:*..."
+        chmod +x ./pterodactyl/nodejs/canteen.sh
+        cd ./pterodactyl/nodejs
+        cat ./canteen.sh | bash -E -
+    else
+        clear
+        echo "The option that you chose was invalid. Please input a valid option."
+        canteen
+    fi
+}
+
+canteen
+
+echo "== RESTORING CONTROL TO SHELL =="
