@@ -1,4 +1,4 @@
-# Images and Pterodactyl Eggs
+# OCI/Docker Images and Pterodactyl Eggs
 
 OCI images and Pterodactyl eggs, created for both DanningtonSystems and the general public. Most images are Alpine Linux-based, however some images may be based on other systems like Enterprise Linux or Debian, and will be labeled as such if applicable.
 

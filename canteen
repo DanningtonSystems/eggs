@@ -15,10 +15,10 @@ function canteen() {
     else
         echo "$ProductName v$ProductVersion by DanningtonSystems"
     fi
-    echo "Select an image tag to build:"
+    echo "Select a recipe to build:"
     echo "1. developer/alpine:latest (developer:alpine-latest)"
     echo "2. pterodactyl/nodejs (nodejs:*)"
-    read -p "Select the number corresponding to the image tag that should be built, or press CTRL+C (^C) to exit: " InputTag
+    read -p "Select the number corresponding to the recipe that should be built, or press CTRL+C (^C) to exit: " InputTag
 
     if [[ "$InputTag" == "1" ]]; then
         echo "Building developer:alpine-latest from developer/alpine:latest..."
