@@ -5,7 +5,9 @@ OCI/Docker images specifically for developers to test, debug, and play with diff
 ## How to run these images
 
 To run DanningtonSystems developer images and attach directly to the startup shell:
-`docker run -it --rm ghcr.io/danningtonsystems/developer:[folder name of tag that you want to use]`
+`docker run -it --rm ghcr.io/danningtonsystems/developer:[tag name of the folder that you want to use]`
 
-For example, if you wanted to use `alpine-latest`:
+For example, if you wanted to use `alpine/latest`:
 `docker run -it --rm ghcr.io/danningtonsystems/developer:alpine-latest`
+
+(Essentially, `ubuntu/latest` would turn into `ubuntu-latest`, or `rocky/8.4` would turn into `rocky-8_4`.)

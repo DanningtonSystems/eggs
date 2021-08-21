@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-if [ "$ProductMaster" = "true" ]; then
-    echo "WARNING: Running in publisher mode, CTRL+C if you don't want to continue. Waiting for 5 seconds.."
-    sleep 5
-fi
+Publisher-Warning
 cp ./entrypoint.sh ./14
 cp ./entrypoint.sh ./16
 docker build -t ghcr.io/danningtonsystems/node:16 ./16/

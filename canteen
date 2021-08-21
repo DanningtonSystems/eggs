@@ -2,10 +2,17 @@
 ProductName="Canteen"
 ProductVersion=1.0.0
 ProductMaster=false
-
+ProductPathDirectory="$( cd "$( dirname $0 )" && pwd )"
+ProductDependentPath="$ProductPathDirectory/.canteen"
 if [ -f ".enablepublish" ]; then
     export ProductMaster=true
 fi
+
+function Get-Script() {
+    chmod +x "$1/canteen.sh"
+    chmod +x $ProductDependentPath/loader.sh
+    "$ProductDependentPath/loader.sh" "$1"
+}
 
 clear
 echo "== PASSING CONTROL TO CANTEEN =="
@@ -17,19 +24,19 @@ function canteen() {
     fi
     echo "Select a recipe to build:"
     echo "1. developer/alpine:latest (developer:alpine-latest)"
-    echo "2. pterodactyl/nodejs (nodejs:*)"
+    echo "2. developer/ubuntu:latest (developer:ubuntu-latest)"
+    echo "3. pterodactyl/nodejs (nodejs:*)"
     read -p "Select the number corresponding to the recipe that should be built, or press CTRL+C (^C) to exit: " InputTag
 
     if [[ "$InputTag" == "1" ]]; then
         echo "Building developer:alpine-latest from developer/alpine:latest..."
-        chmod +x ./developer/alpine/latest/canteen.sh
-        cd ./developer/alpine/latest
-        cat ./canteen.sh | bash -E -
+        Get-Script $ProductPathDirectory/developer/alpine/latest
     elif [[ "$InputTag" == "2" ]]; then
+        echo "Building debian/ubuntu-latest from developer/debian:ubuntu-latest..."
+        Get-Script $ProductPathDirectory/developer/ubuntu/latest
+    elif [[ "$InputTag" == "3" ]]; then
         echo "Building pterodactyl/nodejs from pterodactyl/nodejs:*..."
-        chmod +x ./pterodactyl/nodejs/canteen.sh
-        cd ./pterodactyl/nodejs
-        cat ./canteen.sh | bash -E -
+        Get-Script $ProductPathDirectory/pterodactyl/nodejs
     else
         clear
         echo "The option that you chose was invalid. Please input a valid option."

@@ -1,0 +1,3 @@
+# Ubuntu OCI developer images
+
+Ubuntu developer OCI/Docker images, made by DanningtonSystems. Useful for debugging, developing, and testing applications designed for Ubuntu- or Debian-based platforms and/or workflows. The images are based on `ubuntu:latest` on Docker Hub, and include utilities that are useful for DNS analysis, debugging, and compilation (along with other utilities). It also includes ZSH and Starship, a powerful prompt for ZSH and Bash, preconfigured for ZSH (the default shell in this system) and Bash.
