@@ -8,7 +8,7 @@ FROM node:16-alpine
 LABEL author="Daniel Hyders"
 LABEL maintainer="hello@bean.codes"
 
-RUN apk add --no-cache --update git ffmpeg curl wget gnupg ca-certificates bind-tools sqlite python3 tzdata xz libatomic bash
+RUN apk add --no-cache --update git ffmpeg curl wget gnupg ca-certificates bind-tools sqlite python3 tzdata xz libatomic bash rsync openssh
 
 RUN apk add --no-cache --update yarn
 

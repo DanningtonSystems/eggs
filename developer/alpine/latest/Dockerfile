@@ -9,7 +9,7 @@ LABEL maintainer="hello@bean.codes"
 
 ENV STARSHIP_CONFIG=/starship.toml
 
-RUN apk add --no-cache --update git ffmpeg curl wget gnupg ca-certificates bind-tools sqlite python3 tzdata xz libatomic bash zsh alpine-sdk sudo starship nano neofetch util-linux shadow
+RUN apk add --no-cache --update git ffmpeg curl wget gnupg ca-certificates bind-tools sqlite python3 tzdata xz libatomic bash zsh alpine-sdk sudo starship nano neofetch util-linux shadow openssh rsync
 RUN echo "root:container" | chpasswd
 RUN echo "container" | chsh -s /bin/zsh
 
