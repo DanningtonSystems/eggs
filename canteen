@@ -11,7 +11,7 @@ fi
 function Get-Script() {
     chmod +x "$1/canteen.sh"
     chmod +x $ProductDependentPath/loader.sh
-    "$ProductDependentPath/loader.sh" "$1"
+    bash "$ProductDependentPath/loader.sh" "$1"
 }
 
 clear

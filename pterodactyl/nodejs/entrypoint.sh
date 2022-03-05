@@ -42,5 +42,5 @@ fi
 echo "CSTART"
 clear 
 
-echo "[EGG]: Starting app.."
+echo "[EGG]: Starting app (running Node $(/usr/local/bin/node -v)).."
 /usr/local/bin/node "$ENTRYFILE"
