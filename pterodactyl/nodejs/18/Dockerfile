@@ -1,12 +1,12 @@
 # DanningtonSystems Dockerfile
-# Description: Node.js (Alpine), 16.x
+# Description: Node.js (Alpine), 18.x
 # Requires v1.4.x of Pterodactyl and Wings in order to run
 # Licenced under GPLv3, see LICENSE.md in root of repository for details
 
-FROM node:16-alpine
+FROM node:18-alpine
 
 LABEL author="Daniel Hyders"
-LABEL maintainer="hello@bean.codes"
+LABEL maintainer="hello@danny.codes"
 
 RUN apk add --no-cache --update git ffmpeg curl wget gnupg ca-certificates bind-tools sqlite python3 tzdata xz libatomic bash rsync openssh make
 

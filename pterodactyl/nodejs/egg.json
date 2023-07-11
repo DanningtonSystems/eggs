@@ -1,18 +1,19 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
-        "version": "PTDL_v1",
+        "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2021-08-04T15:35:50-07:00",
+    "exported_at": "2023-07-10T17:59:19-07:00",
     "name": "Node.js",
     "author": "hello@bean.codes",
-    "description": "A Node.js egg for DanningtonSystems.",
+    "description": "A Node.js egg for Hydrabank.",
     "features": null,
-    "images": [
-        "ghcr.io\/danningtonsystems\/node:16",
-        "ghcr.io\/danningtonsystems\/node:14"
-    ],
+    "docker_images": {
+        "ghcr.io\/danningtonsystems\/node:18": "ghcr.io\/danningtonsystems\/node:18",
+        "ghcr.io\/danningtonsystems\/node:16": "ghcr.io\/danningtonsystems\/node:16",
+        "ghcr.io\/danningtonsystems\/node:14": "ghcr.io\/danningtonsystems\/node:14"
+    },
     "file_denylist": [],
     "startup": "\/usr\/bin\/false",
     "config": {
@@ -31,12 +32,13 @@
     "variables": [
         {
             "name": "Entryfile",
-            "description": "This should be the file that should be started with Node.js on startup.",
+            "description": "This should be the file that should be started with Node.js on startup. If no file is specified, a fallback.sh will be used. If neither are used, the startup command override will be read.",
             "env_variable": "ENTRYFILE",
             "default_value": "index.js",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:256"
+            "rules": "nullable|string|max:256",
+            "field_type": "text"
         },
         {
             "name": "Prerequisite startup commands",
@@ -45,7 +47,8 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string"
+            "rules": "nullable|string",
+            "field_type": "text"
         },
         {
             "name": "Prerequisite install commands",
@@ -54,7 +57,8 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string"
+            "rules": "nullable|string",
+            "field_type": "text"
         },
         {
             "name": "Git repository URL",
@@ -63,7 +67,8 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string"
+            "rules": "nullable|string",
+            "field_type": "text"
         }
     ]
 }
