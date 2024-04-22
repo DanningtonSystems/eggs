@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # array of versions to build
-versions=(14 16 18)
+versions=(14 16 18 20)
 Publisher-Warning
 
 # loop through all the versions
